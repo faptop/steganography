@@ -1,0 +1,49 @@
+# Q => HOW TO EXTRACT THE DECIMAL NUMBER 104 0R 'h' BACK FROM PIXEL RGB BAND VALUES ?
+# ANS:
+
+#  now we are extracting pixels---> bands(rgb) values:
+# 1.this function will extract last 3 bits of red & last 3 bits of green & last 2 bits of blue
+#  2.band of a pixel in image ex.. red(115) =01110011 (red_band & 0x7 = 3)
+#                                    green(149)=10010010 (green_band & 0x7 =2)
+#                                    blue(188)=10111100  (blue_band &0x3 =0)
+
+
+# def extract_bits(band,n):
+
+# band is(red,green or blue) and n=(you are taking 3 or 2 bits )
+#  remember with red(n=3) and green we are ANDING with 7 written as 2**n - 1(2**3 -1=7)
+#  for blue(n=2) we are ANDING with 3 wrtten as same 2**n -1 (2**2-1=3)
+
+#      return band & (2**n -1)
+
+# ALWAYS REMEMBER WE USE LAMBDA FUNCTION WHEN (A FUNCTION IS 1 LINE FUNCTION )
+# SO HERE WE USED LAMBDA FUNCTION
+
+
+extraxt_bits =lambda band,n : band & (2**n-1)
+
+a=extraxt_bits(115,3)  #ans = 3
+b=extraxt_bits(146,3)  #ans = 2
+c=extraxt_bits(188,2)  #ans = 0
+
+# AFTER EXTRACTING BAND VALUES (3,2,0) NOW COMBINE/MERGE THIER BINARY AND FORM A SINGLE
+# DECIMAL AND ASCII VALUE
+
+# REFER IMAGE 2
+def merge_bits(r_bits,g_bits,b_bits):
+    data = r_bits
+    data = r_bits << 3  # left shift is used to make 3 spaces for g_bits
+    data = data | g_bits # OR operator is used to combine g_bit with r_bits
+    data =data << 2
+    data =data | b_bits
+    return data
+
+# WE CAN RETURN THIS IN 1 LINE ALSO AND USE LAMBDA FUNCTIO FOR THAT
+# def merge_bits(r_bits,g_bits,b_bits):
+#     return (((r_bits << 3) | g_bits) << 2)| b_bits
+# CAN BE REPLACED WITH LAMBDA
+# merge_bits =lambda r_bits,g_bits,b_bits : (((r_bits <<3) | g_bits) << 2)| b_bits
+
+
+print(merge_bits(a,b,c)) # ans =104
+print(chr(merge_bits(a,b,c))) #ans =h

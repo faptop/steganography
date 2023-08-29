@@ -1,0 +1,18 @@
+# how to split binary of any decimal number into (red,green,blue)
+# we will use and operator ref to image 1
+#  we use AND operator (11) for 2 bit and (111) for 3 bits bec. AND (1) always give same 
+# number which is AND with (11) or (111)...
+def split(data):
+    blue_bit= data & 0x3 # we use decimal 3-->(11) binary form ---> 0x3 hexadecimal form
+    # we use hexadecimal bec. AND operator work in hexadecimal only...
+    #here blue_bit come in a decimal number form itself which is (0)
+    #loose 2 bits
+    data= data >> 2
+    # we right shift by 2 to delete blue binary two bits and make green 3 last bits
+    green_bit =data & 0x7 # here we use decimal 7--->(111) binary form --->0x7 hexa.
+    # here green_bit comes in a decimal form (2)
+    #loose 3 bits
+    red_bit=data >> 3
+    return [red_bit,green_bit,blue_bit]
+    # for 1 line  return[ data>>5 ,((data>>2) & 0x7), (data & 0x3)]
+print(split(ord('h'))) #here ord() will  make ASCII value of 'h' --> decimal number form--->104 

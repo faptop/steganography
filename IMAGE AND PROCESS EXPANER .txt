@@ -1,0 +1,23 @@
+# steneography
+#  it is the processs of embedding an document into an image and share it ,then extract document from image
+# Q - is image size increases when document is added?
+# ans -- No some part of image is replaced with document and image size remain same.
+# Q - what is an image?
+# ans -- matrix of pixels
+
+IMAGE EXPLANED
+1.in rgb colour model there are three bands in 1 PIXEL=> RED(0-255) GREEN(0-255) BLUE(0-255)
+2.every colour is represented by rbg models with different band values.
+3.EACH BAND HAS SIZE OF 1 BITS. MEANS 1 PIXEL HAS 3 BITS
+
+Q- HOW WE ARE EMBEDDING DOCUMENT IN AN IMAGE?
+ANS --WE USE THE BENIFET OF HUMAN EYE  NOT RESOLUTION OF TWO CLOSE PIXELS COLOURS.
+STEPS:-
+  1.WE CONVERT DECIMAL INTO BINARY 8 DIGETS.
+   2. WE BREAK BINARY NUMBER INTO (3,3,2) PARTS FIRST RED,SECOND GREEN,THIRD BLUE.
+   3. WE PUT UP A PIXEL AND WRITE DOWN 3 COLOUR BAND OF IT.
+   4. THEN CONVERT PIXEL RGB BAND (0-255) DECIMAL VALUES INTO BINARY.
+    5. REPLACE LAST (3,3,2)BINARY DIGITS OF RGB BY NUMBER(3,3,2) BINARY DIGITS.
+     6. THEN CONVERT THIS MODIFIED BINARY INTO DECIMAL. THEN RGB VALUES WILL CHANGE SLIGHTLY COMBINE RGB AND MAKE PIXEL COLOUR.
+  7. IT WILL BE SLIGHTLY SIMILAR TO PREVIUS COLOUR THAT OUR EYE NOT RESOLVED AND THAT PROCESS WE EMBEDDED DOCUMENT INTO IMAGE PIXELS.
+ 
